@@ -4,7 +4,7 @@
 
 class Mult_4x4:public BaseMult{
 public:
-  void multAB(int type);//type 0:1x4  1:register, 2:ptr,3:open
+  void multAB(int type);//type 0:1x4  1:register, 2:ptr,3:sse
   Mult_4x4(int m,int n,int k):BaseMult(m,n,k){};
 protected:
 

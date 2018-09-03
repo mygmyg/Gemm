@@ -15,7 +15,7 @@ static double gtod_ref_time_sec = 0.0;
 
 double dclock()
 {
-    double         the_time, norm_sec;
+    double     the_time, norm_sec;
     struct timeval tv;
     
     gettimeofday( &tv, NULL );
@@ -123,25 +123,22 @@ void testMult_packing(int m, int n, int k)
   double duration = dclock() - start_time;
   std::cout << "mult_Packing type:0 pack A mult :" << duration << std::endl;
 
+  start_time = dclock();
+  mult->multAB(1);
+  duration = dclock() - start_time;
+  std::cout << "mult_Packing type:1 pack AB mult :" << duration << std::endl;
+
   delete mult;
 }
 
 int main(int argc, char const *argv[])
 {
-  int m,n,k;
-  if(argc==1)
-  {
-    m=n=k=400;
-  }
-  else if(argc==2){
-    m = n = k = atof(argv[1]);
+  int m=400,n=400,k=400;
+  if(argc==2){
+    m = n = k = atoi(argv[1]);
   }
   std::cout<<"m:"<<m<<" ,n:"<<n<<" ,k:"<<k<<std::endl;
-
-  
-
   testBaseMult(m,n,k);
-
   testMult1x4(m,n,k);
   testMult4x4(m,n,k);
   testMult_block(m,n,k);

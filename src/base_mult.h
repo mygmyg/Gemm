@@ -10,6 +10,10 @@ using std::default_random_engine;
 #define B( i, j ) b[ (j)*ldb + (i) ]
 #define C(i,j) c[ (j)*ldc + (i) ]
 
+#if __cplusplus > 199711L
+#define register // Deprecated in C++11.
+#endif           // #if __cplusplus > 199711L
+
 struct MyMatrix{
   
   int m;
